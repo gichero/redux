@@ -12,10 +12,52 @@
 */
 import React from 'react';
 import ReactDOM from 'react-dom';
+import * as Redux from 'reducer';
+import reducer from './Dragon.reducer';
+
+let store = Redux.createStore(reducer);
 
 class DragonGame extends React.Component {
+
+    fight() {
+   store.dispatch({
+     type: 'fight',
+   });
+ }
+
+ flight() {
+   store.dispatch({
+     type: 'flight'
+   });
+ }
+
+ reset() {
+   store.dispatch({
+     type:'reset'
+   });
+ }
+
   render() {
     let message;
+    let message = this.props.current.message;
+    let controls = this.props.current.game_end ? (
+      <div>
+        <button onClick={event => {this.reset()}}>
+          Reset
+        </button>
+      </div>
+      ) : (
+      <div>
+        <button onClick={event => {this.fight()}}>
+          Fight
+        </button>
+        <button onClick={event => {this.flight()}}>
+          Flight
+        </button>
+      </div>
+    );
+
+
     return (
       <div>
         <img src="http://img10.deviantart.net/e984/i/2015/287/c/5/red_dragon_by_sandara-d6hpycs.jpg" width="300"/>
