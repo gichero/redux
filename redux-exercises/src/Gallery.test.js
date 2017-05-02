@@ -4,6 +4,8 @@ it('should initialize to zero', () => {
   expect(reducer(undefined, {type: 'init'})).toEqual(0);
 });
 
+
+
 // Write additional tests for
 // 1. going to next image
 // 2. make sure it wraps around if goes over
