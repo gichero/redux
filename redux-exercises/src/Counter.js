@@ -12,14 +12,28 @@ class Counter extends React.Component {
 
     return (
       <div>
-        <button onClick={()=> this.subtract()}>-</button>
+        <button onClick={()=> this.subtract()}> - </button>
         {count}
-        <button onClick={()=> this.add()}>+</button>
+        <button onClick={()=> this.add()}> + </button>
       </div>
     );
   }
 
   }
+
+  function add(){
+      store.dispatch({
+          type: 'add'
+      });
+  }
+
+  function subtract(){
+      store.dispatch({
+          type: 'subtract'
+      });
+  }
+
+
 
 
 
