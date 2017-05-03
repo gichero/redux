@@ -6,16 +6,7 @@ import reducer from './Counter.reducer';
 let store = Redux.createStore(reducer);
 
 class Counter extends React.Component {
-  // add() {
-  //   store.dispatch({
-  //     type: 'add'
-  //   });
-  // }
-  // subtract() {
-  //   store.dispatch({
-  //     type: 'subtract'
-  //   });
-  // }
+
   render() {
     let count = store.getState();
     let add = () => store.dispatch({
@@ -26,13 +17,25 @@ class Counter extends React.Component {
     });
     return (
       <div>
-        <button onClick={add}>-</button>
+        <button onClick={add}>+</button>
         {count}
-        <button onClick={subtract}>+</button>
+        <button onClick={subtract}>-</button>
       </div>
     );
   }
+  add() {
+    store.dispatch({
+      type: 'add'
+    });
+  }
+  subtract() {
+    store.dispatch({
+      type: 'subtract'
+    });
+  }
+
 }
+
 
 function display() {
   ReactDOM.render(

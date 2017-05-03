@@ -1,1 +1,1 @@
-import './Gallery';
+import './Counter';
