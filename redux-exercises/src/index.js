@@ -1,1 +1,1 @@
-import './HeadsTails';
+import './Gallery';

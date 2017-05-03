@@ -12,19 +12,26 @@ const IMAGES = [
   'images/monorail.jpg',
 ];
 
-let store = Redux.createStore(reducer,
-window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+let store = Redux.createStore(
+  reducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 class Gallery extends React.Component {
-
+  select(idx) {
+    store.dispatch({
+      type: 'select',
+      index: idx
+    });
+  }
   render() {
-      let state = store.getState();
-      let currentImage = state.images[state.currentIndex];
-      let next = () => store.dispatch({type: 'next'});
-    
+    let state = store.getState();
+    let currentImage = state.images[state.currentIndex];
+    let next = () => store.dispatch({type: 'next'});
+    let prev = () => store.dispatch({type: 'previous'});
     return (
       <div>
-        <button>
+        <button onClick={prev}>
           Previous
         </button>
         <button onClick={next}>
@@ -33,8 +40,8 @@ class Gallery extends React.Component {
         <br/>
           <img src={currentImage} key={currentImage}/>
         <div>
-          {this.props.images.map((imageUrl, idx) =>
-            <img key={idx} src={imageUrl} height="60"/>
+          {state.images.map((imageUrl, idx) =>
+            <img key={idx} src={imageUrl} height="60" onClick={() => this.select(idx)}/>
           )}
         </div>
       </div>
@@ -44,9 +51,14 @@ class Gallery extends React.Component {
 
 function display() {
   ReactDOM.render(
-    <Gallery images={IMAGES}/>,
+    <Gallery/>,
     document.getElementById('root')
   );
 }
-display();
 store.subscribe(display);
+display();
+
+store.dispatch({
+  type: 'receive_images',
+  images: IMAGES
+});

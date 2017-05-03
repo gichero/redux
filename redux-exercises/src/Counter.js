@@ -3,42 +3,36 @@ import ReactDOM from 'react-dom';
 import * as Redux from 'redux';
 import reducer from './Counter.reducer';
 
-let store = Redux.createStore(
-    reducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+let store = Redux.createStore(reducer);
 
 class Counter extends React.Component {
-
-    add(){
-      store.dispatch({
-          type: 'add'
-      });
-    }
-
-    subtract(){
-      store.dispatch({
-          type: 'subtract'
-      });
-    }
-
-
-
+  // add() {
+  //   store.dispatch({
+  //     type: 'add'
+  //   });
+  // }
+  // subtract() {
+  //   store.dispatch({
+  //     type: 'subtract'
+  //   });
+  // }
   render() {
     let count = store.getState();
-
-
+    let add = () => store.dispatch({
+      type: 'add'
+    });
+    let subtract = () => store.dispatch({
+      type: 'subtract'
+    });
     return (
       <div>
-        <button onClick={()=> this.subtract()}> - </button>
+        <button onClick={add}>-</button>
         {count}
-        <button onClick={()=> this.add()}> + </button>
+        <button onClick={subtract}>+</button>
       </div>
     );
   }
-
-  }
-
-
+}
 
 function display() {
   ReactDOM.render(
