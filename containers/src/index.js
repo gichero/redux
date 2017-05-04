@@ -9,16 +9,17 @@ import * as ReactRedux from 'react-redux';
 
 const INITIAL_STATE = {
   idx: 0,
-  count: 0
+  count: 0,
+  
 };
 
 function reducer(state = INITIAL_STATE, action) {
   return {
     count: counterReducer(state.count, action),
-    idx:galleryReducer(state.idx, action)
+    idx: galleryReducer(state.idx, action)
   }
 }
-const store = Redux.createStore(reducer);
+const store = Redux.createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 const CounterContainer = ReactRedux.connect(
   state => ({ count: state.count }),

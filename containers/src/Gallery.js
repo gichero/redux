@@ -1,7 +1,4 @@
 import React from 'react';
-// import ReactDOM from 'react-dom';
-// import * as Redux from 'redux';
-// import reducer from './Gallery.reducer';
 
 
 export default class Gallery extends React.Component {
@@ -16,6 +13,7 @@ export default class Gallery extends React.Component {
       ];
 
       let currentImage = IMAGES[this.props.index];
+      let dragstatus = this.props.whatever
 
     return (
       <div>
