@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import * as Redux from 'redux';
 import Counter from './Counter';
 import Gallery from './Gallery';
+import HeadsTails from './HeadsTails';
 import counterReducer from './Counter.reducer';
 import galleryReducer from './Gallery.reducer';
 import headsTailsReducer from './HeadsTails.reducer'
@@ -48,7 +49,7 @@ const GalleryContainer = ReactRedux.connect(
 )(Gallery);
 
 const HeadsTailsContainer = ReactRedux.connect(
-    state=> ({index: state.imageUrl }),
+    state=> ({imageUrl: state.imageUrl}),
     dispatch => ({
         flip: () => dispatch({
             type: 'flip',
