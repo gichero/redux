@@ -1,15 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import reducer from './HeadsTails.reducer';
-import * as Redux from 'redux';
-// Add code to create a store
-let store = Redux.createStore(
-  reducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
 
 
-class HeadsTails extends React.Component {
+
+export default class HeadsTails extends React.Component {
   render() {
     let imageUrl;
     if (store.getState()) {
@@ -32,11 +25,3 @@ class HeadsTails extends React.Component {
     );
   }
 }
-
-// Wrap this in a display function, and subscribe to store's state
-// changes and re-display
-function display() {
-  ReactDOM.render(<HeadsTails/>, document.getElementById('root'));
-}
-display();
-store.subscribe(display);

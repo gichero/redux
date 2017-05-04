@@ -13,7 +13,7 @@ export default class Gallery extends React.Component {
       ];
 
       let currentImage = IMAGES[this.props.index];
-      let dragstatus = this.props.whatever
+      
 
     return (
       <div>
